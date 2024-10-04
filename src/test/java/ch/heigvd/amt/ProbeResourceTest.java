@@ -5,16 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.containsString;
 
 @QuarkusTest
-class GreetingResourceTest {
+class ProbeResourceTest {
     @Test
-    void testHelloEndpoint() {
+    void testIndex() {
         given()
-          .when().get("/hello")
+          .when().get("/")
           .then()
              .statusCode(200)
-             .body(is("Hello from Quarkus REST"));
+             .body(containsString("Welcome to Uptime"));
     }
 
 }
