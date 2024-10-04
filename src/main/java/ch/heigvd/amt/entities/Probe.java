@@ -1,9 +1,7 @@
 package ch.heigvd.amt.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.URL;
@@ -11,6 +9,11 @@ import org.hibernate.validator.constraints.URL;
 import java.io.Serializable;
 
 @Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"url"})
+        }
+)
 public class Probe {
 
     @Id
